@@ -156,6 +156,7 @@ class FormDangKy extends Component {
                   required
                   title="Họ tên"
                   name="hoTen"
+                  pattern="^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$"
                   minLength={3}
                   maxLength={32}
                   value={hoTen}
