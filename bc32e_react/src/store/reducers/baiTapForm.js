@@ -1,12 +1,14 @@
 const stateDefault = {
   mangSinhVien: [
     // {
+    //   id: 1237982173,
     //   maSV: 1,
     //   hoTen: "Nguyễn Văn A",
     //   soDienThoai: 938111111,
     //   email: "nguyenvana@gmail.com",
     // },
     // {
+    //   id: 12738971293,
     //   maSV: 2,
     //   hoTen: "Nguyễn Văn B",
     //   soDienThoai: 938111111,
@@ -21,25 +23,24 @@ export const baiTapForm = (state = stateDefault, { type, payload }) => {
     case "ADD_USER": {
       const data = [...state.mangSinhVien];
       const user = { ...payload, id: Date.now() };
-      console.log(user);
       data.push(user);
       return { ...state, mangSinhVien: data };
     }
 
     case "DELETE_USER": {
-      const data = state.mangSinhVien.filter((sv) => sv.maSV !== payload);
+      const data = state.mangSinhVien.filter((sv) => sv.id !== payload);
       return { ...state, mangSinhVien: data };
     }
 
     case "EDIT_USER": {
-      const sv = state.mangSinhVien.find((sv) => sv.maSV === payload);
+      const sv = state.mangSinhVien.find((sv) => sv.id === payload);
       console.log("sv: ", sv);
       return { ...state, selectedUser: sv };
     }
 
     case "UPDATE_USER": {
       const newSVList = state.mangSinhVien.map((sv) =>
-        sv.maSV === payload.maSV ? payload : sv
+        sv.id === payload.id ? payload : sv
       );
 
       state.selectedUser = null;
@@ -47,7 +48,6 @@ export const baiTapForm = (state = stateDefault, { type, payload }) => {
     }
 
     case "SEARCH_USER": {
-      console.log(payload.maSV);
       const searchSV = state.mangSinhVien.filter((sv) =>
         sv.maSV === payload.maSV ||
         sv.hoTen === payload.hoTen ||

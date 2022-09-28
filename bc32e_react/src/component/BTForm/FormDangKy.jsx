@@ -157,7 +157,7 @@ class FormDangKy extends Component {
                   title="Họ tên"
                   name="hoTen"
                   minLength={3}
-                  maxLength={16}
+                  maxLength={32}
                   value={hoTen}
                   className="w-full border-2 border-slate-300 rounded-md p-3"
                   // onChange={(event) => {
@@ -179,6 +179,7 @@ class FormDangKy extends Component {
                   name="soDienThoai"
                   minLength={3}
                   maxLength={16}
+                  pattern="^[0-9]*$"
                   value={soDienThoai}
                   className="w-full border-2 border-slate-300 rounded-md p-3"
                   // onChange={(event) => {
@@ -201,7 +202,7 @@ class FormDangKy extends Component {
                   title="Email"
                   name="email"
                   minLength={3}
-                  maxLength={16}
+                  maxLength={32}
                   value={email}
                   pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                   className="w-full border-2 border-slate-300 rounded-md p-3"

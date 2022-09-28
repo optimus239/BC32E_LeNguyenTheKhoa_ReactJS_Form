@@ -22,8 +22,8 @@ class DanhSachSinhVien extends Component {
               <tr key={index}>
                 <td>{item.maSV}</td>
                 <td>{item.hoTen}</td>
-                <td>{item.email}</td>
                 <td>{item.soDienThoai}</td>
+                <td>{item.email}</td>
                 <td>
                   <button
                     className="bg-red-500 rounded-sm px-4 py-3 mr-3"
@@ -31,7 +31,7 @@ class DanhSachSinhVien extends Component {
                       e.preventDefault();
                       this.props.dispatch({
                         type: "DELETE_USER",
-                        payload: item.maSV,
+                        payload: item.id,
                       });
                     }}
                   >
@@ -43,7 +43,7 @@ class DanhSachSinhVien extends Component {
                       e.preventDefault();
                       this.props.dispatch({
                         type: "EDIT_USER",
-                        payload: item.maSV,
+                        payload: item.id,
                       });
                     }}
                   >
