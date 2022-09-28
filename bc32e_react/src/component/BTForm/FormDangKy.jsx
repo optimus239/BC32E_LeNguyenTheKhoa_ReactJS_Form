@@ -98,7 +98,7 @@ class FormDangKy extends Component {
     // console.log("nextprops", nextProps, "currentstate", currentState);
     if (
       nextProps.selectedUser &&
-      nextProps.selectedUser.maSV !== currentState.values.maSV
+      nextProps.selectedUser.id !== currentState.values.id
     ) {
       currentState.values = nextProps.selectedUser;
     }
