@@ -1,17 +1,17 @@
 const stateDefault = {
   mangSinhVien: [
-    {
-      maSV: 1,
-      hoTen: "Nguyễn Văn A",
-      soDienThoai: 938111111,
-      email: "nguyenvana@gmail.com",
-    },
-    {
-      maSV: 2,
-      hoTen: "Nguyễn Văn B",
-      soDienThoai: 938111111,
-      email: "nguyenvanb@gmail.com",
-    },
+    // {
+    //   maSV: 1,
+    //   hoTen: "Nguyễn Văn A",
+    //   soDienThoai: 938111111,
+    //   email: "nguyenvana@gmail.com",
+    // },
+    // {
+    //   maSV: 2,
+    //   hoTen: "Nguyễn Văn B",
+    //   soDienThoai: 938111111,
+    //   email: "nguyenvanb@gmail.com",
+    // },
   ],
   selectedUser: null,
 };
@@ -44,6 +44,19 @@ export const baiTapForm = (state = stateDefault, { type, payload }) => {
 
       state.selectedUser = null;
       return { ...state, mangSinhVien: newSVList };
+    }
+
+    case "SEARCH_USER": {
+      console.log(payload.maSV);
+      const searchSV = state.mangSinhVien.filter((sv) =>
+        sv.maSV === payload.maSV ||
+        sv.hoTen === payload.hoTen ||
+        sv.soDienThoai === payload.soDienThoai ||
+        sv.email === payload.email
+          ? true
+          : false
+      );
+      return { ...state, mangSinhVien: searchSV };
     }
     default:
       return state;

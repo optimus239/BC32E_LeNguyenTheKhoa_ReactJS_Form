@@ -2,13 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 class FormDangKy extends Component {
+  stateDefault = {
+    maSV: "",
+    hoTen: "",
+    soDienThoai: "",
+    email: "",
+  };
+
   state = {
-    values: {
-      maSV: "",
-      hoTen: "",
-      soDienThoai: "",
-      email: "",
-    },
+    values: this.stateDefault,
+    search: this.stateDefault,
     errors: {},
   };
 
@@ -19,6 +22,26 @@ class FormDangKy extends Component {
         ...this.state.values,
         [name]: value,
       },
+    });
+  };
+
+  changeSearch = (event) => {
+    const { value } = event.target;
+    this.setState({
+      search: {
+        ...this.state.search,
+        maSV: value,
+        hoTen: value,
+        soDienThoai: value,
+        email: value,
+      },
+    });
+  };
+
+  handleSearch = (event) => {
+    this.props.dispatch({
+      type: "SEARCH_USER",
+      payload: this.state.search,
     });
   };
 
@@ -67,17 +90,12 @@ class FormDangKy extends Component {
     });
 
     this.setState({
-      values: {
-        maSV: "",
-        hoTen: "",
-        soDienThoai: "",
-        email: "",
-      },
+      values: this.stateDefault,
     });
   };
 
   static getDerivedStateFromProps = (nextProps, currentState) => {
-    console.log("nextprops", nextProps, "currentstate", currentState);
+    // console.log("nextprops", nextProps, "currentstate", currentState);
     if (
       nextProps.selectedUser &&
       nextProps.selectedUser.maSV !== currentState.values.maSV
@@ -215,11 +233,20 @@ class FormDangKy extends Component {
                 >
                   Cập nhật
                 </button>
+              </div>
+              <div>
+                <input
+                  id="search"
+                  type="text"
+                  className="border-2 border-slate-300 rounded-md p-2"
+                  onChange={this.changeSearch}
+                />
                 <button
-                  type="reset"
-                  className="rounded-md w-32 h-11 bg-blue-500 text-white"
+                  form="search"
+                  className="rounded-md w-32 h-11 bg-blue-500 text-white ml-3"
+                  onClick={this.handleSearch}
                 >
-                  Reset
+                  Tìm
                 </button>
               </div>
             </div>
