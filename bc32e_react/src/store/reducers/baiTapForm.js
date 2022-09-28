@@ -2,14 +2,14 @@ const stateDefault = {
   mangSinhVien: [
     // {
     //   id: 1237982173,
-    //   maSV: 1,
+    //   maSV: 123,
     //   hoTen: "Nguyễn Văn A",
     //   soDienThoai: 938111111,
     //   email: "nguyenvana@gmail.com",
     // },
     // {
     //   id: 12738971293,
-    //   maSV: 2,
+    //   maSV: 234,
     //   hoTen: "Nguyễn Văn B",
     //   soDienThoai: 938111111,
     //   email: "nguyenvanb@gmail.com",
